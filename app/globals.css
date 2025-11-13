@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0f1a;
+  --fg: #e5e7eb;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Aurora gradient backdrop */
+.aurora {
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 70vh;
+  filter: blur(60px) saturate(120%);
+  background: radial-gradient(800px circle at 20% 10%, rgba(56,189,248,.25), transparent 50%),
+              radial-gradient(600px circle at 80% 20%, rgba(168,85,247,.25), transparent 50%),
+              radial-gradient(700px circle at 50% 0%, rgba(99,102,241,.25), transparent 60%);
+  pointer-events: none;
+}
+
+/* Subtle grid */
+.grid-overlay:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: theme('backgroundImage.grid');
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse at center, rgba(255,255,255,0.6), transparent 60%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Animated shine */
+.shine {
+  position: relative;
+}
+.shine:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.08) 20%, transparent 40%);
+  transform: translateX(-200%);
+  animation: shine 6s linear infinite;
+}
+@keyframes shine {
+  to { transform: translateX(200%); }
+}
